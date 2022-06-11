@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/telegram-bot/static/css/main.de9fb30c.css",
+    "main.js": "/telegram-bot/static/js/main.c297020c.js",
+    "static/media/pizza.png": "/telegram-bot/static/media/pizza.c644001e8aa3f3446e15.png",
+    "static/media/kebab.png": "/telegram-bot/static/media/kebab.3c4858e89de56131e20d.png",
+    "static/media/burger.png": "/telegram-bot/static/media/burger.cb91a41266710be009e6.png",
+    "static/media/salad.png": "/telegram-bot/static/media/salad.c5129a877d11ec8a4de5.png",
+    "static/media/coca.png": "/telegram-bot/static/media/coca.57521b94cac077d9dde9.png",
+    "static/media/icecream.png": "/telegram-bot/static/media/icecream.596499d573e6d7c47d6a.png",
+    "static/media/water.png": "/telegram-bot/static/media/water.52ba975d6e1bc5be32d3.png",
+    "index.html": "/telegram-bot/index.html",
+    "main.de9fb30c.css.map": "/telegram-bot/static/css/main.de9fb30c.css.map",
+    "main.c297020c.js.map": "/telegram-bot/static/js/main.c297020c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de9fb30c.css",
+    "static/js/main.c297020c.js"
+  ]
+}
