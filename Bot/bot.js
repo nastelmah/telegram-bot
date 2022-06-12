@@ -14,22 +14,10 @@ bot.help((ctx) => ctx.reply(textHelp));
 
 bot.command("menu", async (ctx) => {
   try {
-    await ctx.replyWithHTML(
-      "<b>Menu</b>",
-      Markup.inlineKeyboard([
-        [Markup.button.callback("Show menu order", "menu_1")],
-      ])
-    );
-  } catch (error) {
-    console.error(error);
-  }
-});
-bot.action("menu_1", async (ctx) => {
-  try {
-    await ctx.answerCbQuery();
-    await ctx.reply("Welcome :)))))", {
+    console.log('bot.command("menu"', ctx);
+    await ctx.reply("Menu", {
       reply_markup: {
-        inline_keyboard: [[{ text: "web app", web_app: { url: web_link } }]],
+        inline_keyboard: [[{ text: "Order Food", web_app: { url: web_link } }]],
       },
     });
   } catch (error) {

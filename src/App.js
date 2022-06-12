@@ -13,6 +13,7 @@ function App() {
   const onCheckout = () => {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show();
+    tele.sendData({ name2: "dsdsdsd", success: true });
   };
 
   return (
