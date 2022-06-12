@@ -1,20 +1,33 @@
 {
   "files": {
-    "main.css": "/telegram-bot/static/css/main.de9fb30c.css",
-    "main.js": "/telegram-bot/static/js/main.c297020c.js",
-    "static/media/pizza.png": "/telegram-bot/static/media/pizza.c644001e8aa3f3446e15.png",
-    "static/media/kebab.png": "/telegram-bot/static/media/kebab.3c4858e89de56131e20d.png",
-    "static/media/burger.png": "/telegram-bot/static/media/burger.cb91a41266710be009e6.png",
-    "static/media/salad.png": "/telegram-bot/static/media/salad.c5129a877d11ec8a4de5.png",
-    "static/media/coca.png": "/telegram-bot/static/media/coca.57521b94cac077d9dde9.png",
-    "static/media/icecream.png": "/telegram-bot/static/media/icecream.596499d573e6d7c47d6a.png",
-    "static/media/water.png": "/telegram-bot/static/media/water.52ba975d6e1bc5be32d3.png",
+    "main.css": "/telegram-bot/static/css/main.710d7ffd.css",
+    "main.js": "/telegram-bot/static/js/main.20246183.js",
+    "static/media/Chicken-Caesar-Salad.svg": "/telegram-bot/static/media/Chicken-Caesar-Salad.039daa77e28969a4551b5029fe142e3a.svg",
+    "static/media/Greek-Village.svg": "/telegram-bot/static/media/Greek-Village.84be827783277c9908811025669b64fb.svg",
+    "static/media/Turkey&Cheese-combo.svg": "/telegram-bot/static/media/Turkey&Cheese-combo.07c38b5280a70de5be14a7fcd89898f5.svg",
+    "static/media/Chilli-Con-Carne.svg": "/telegram-bot/static/media/Chilli-Con-Carne.a0d91b5cf760cbcb476daefce4e63ac7.svg",
+    "static/media/Breakfast-Bundle.svg": "/telegram-bot/static/media/Breakfast-Bundle.3a67afa5c0f8183ee101d1d28c0fc9b6.svg",
+    "static/media/Keto-Box.svg": "/telegram-bot/static/media/Keto-Box.e0bac5ab3446b0303c0a4152ca27b9e9.svg",
+    "static/media/Paleo-Breakfast-Pot.svg": "/telegram-bot/static/media/Paleo-Breakfast-Pot.59a8f6e196b85f8d7953f9e513209b2d.svg",
+    "static/media/Chicken-Burrito-Bowl.svg": "/telegram-bot/static/media/Chicken-Burrito-Bowl.ddca5e1b08527d2e22b36dd3148d7613.svg",
+    "static/media/Chicken-Escalope.svg": "/telegram-bot/static/media/Chicken-Escalope.a3f26d42634426fa7806535c1b726d21.svg",
+    "static/media/Beef-Lasagna.svg": "/telegram-bot/static/media/Beef-Lasagna.2c8317ba4839beb691dc3f99633d7f5f.svg",
+    "static/media/Omellete-Platter.svg": "/telegram-bot/static/media/Omellete-Platter.b2e1228298e071a6863baca60b25169d.svg",
+    "static/media/Meat-balls.svg": "/telegram-bot/static/media/Meat-balls.e6c11620e9f9548b0dfa58debe4c22bd.svg",
+    "static/media/Grilled-Chicken.svg": "/telegram-bot/static/media/Grilled-Chicken.918b2d79604fdaa52415b4cadca43ce1.svg",
+    "static/media/Seafood-Chicken-Paella.svg": "/telegram-bot/static/media/Seafood-Chicken-Paella.665036c2fdbf0d54b3c3a6100add1065.svg",
+    "static/media/Chicken-Pesto-Pasta.svg": "/telegram-bot/static/media/Chicken-Pesto-Pasta.4cff0457d791ed74088697ba725a4193.svg",
+    "static/media/Chicken-Fajitas-Platter.svg": "/telegram-bot/static/media/Chicken-Fajitas-Platter.a439a901090d7ece724dad5e237e8f09.svg",
+    "static/media/Granola-Greek-Yogurt.svg": "/telegram-bot/static/media/Granola-Greek-Yogurt.f5fd3fef4d127eebdbc9c5d20259b2dc.svg",
+    "static/media/Toastie-Protein-boiled-Egg.svg": "/telegram-bot/static/media/Toastie-Protein-boiled-Egg.c20c84a744d5315e7abc9849560fc3ed.svg",
+    "static/media/Cappuccino.svg": "/telegram-bot/static/media/Cappuccino.947683797d13486896a4c3bcdc25bc02.svg",
     "index.html": "/telegram-bot/index.html",
-    "main.de9fb30c.css.map": "/telegram-bot/static/css/main.de9fb30c.css.map",
-    "main.c297020c.js.map": "/telegram-bot/static/js/main.c297020c.js.map"
+    "static/media/arrow-right.svg": "/telegram-bot/static/media/arrow-right.a624be12079d8bb82c852c48813bd746.svg",
+    "main.710d7ffd.css.map": "/telegram-bot/static/css/main.710d7ffd.css.map",
+    "main.20246183.js.map": "/telegram-bot/static/js/main.20246183.js.map"
   },
   "entrypoints": [
-    "static/css/main.de9fb30c.css",
-    "static/js/main.c297020c.js"
+    "static/css/main.710d7ffd.css",
+    "static/js/main.20246183.js"
   ]
 }
