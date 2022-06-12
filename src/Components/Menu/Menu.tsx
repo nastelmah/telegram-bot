@@ -6,12 +6,17 @@ import { ListFood } from "../ListFood/LIstFood";
 
 interface IMenuProps {
   foods: IFoodOrder[];
+  cartItems: ICartItems[];
+  setCartItems: React.Dispatch<React.SetStateAction<ICartItems[]>>;
   onCheckout: () => void;
 }
 
-export const Menu = ({ foods, onCheckout }: IMenuProps): JSX.Element => {
-  const [cartItems, setCartItems] = useState<ICartItems[]>([]);
-
+export const Menu = ({
+  foods,
+  onCheckout,
+  cartItems,
+  setCartItems,
+}: IMenuProps): JSX.Element => {
   const onAdd = (food: IFoodOrder) => {
     const exist = cartItems.find((x) => x.id === food.id);
     if (exist) {

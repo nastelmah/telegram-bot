@@ -9,11 +9,11 @@ interface ICartProps {
 
 export const Cart = ({ cartItems, onCheckout }: ICartProps) => {
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
-
+  console.log("cartItems", cartItems);
   return (
     <div className="cart__container">
       {cartItems.length === 0 ? "No items in cart" : ""}
-      <br /> <span className="">Total Price: ${totalPrice.toFixed(2)}</span>
+      <br /> <span className="">Total Price: {totalPrice} AED</span>
       <Button
         title={`${cartItems.length === 0 ? "Order !" : "Checkout"} `}
         type={"checkout"}

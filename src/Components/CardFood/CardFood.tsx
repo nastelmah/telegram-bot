@@ -40,11 +40,25 @@ export const CardFood = ({ food, onAdd, onRemove }: ICardFoodProps) => {
       <div className="card-text">
         <span className="card__title">{name}</span>
         <span className="card__price">{price} AED</span>
-        <button className="btn-container">
-          {" "}
-          Add to Cart <img className="btn-container__image" src={arrowRight} />
-        </button>
-
+        {count === 0 ? (
+          <button
+            className="btn-container"
+            onClick={handleIncrement}
+            disabled={!isAvailable}
+          >
+            Add to Cart{" "}
+            <img className="btn-container__image" src={arrowRight} />
+          </button>
+        ) : (
+          <div className="btn-container">
+            <button onClick={handleIncrement} disabled={!isAvailable}>
+              +
+            </button>
+            <button onClick={handleDecrement} disabled={!isAvailable}>
+              -
+            </button>
+          </div>
+        )}
         {/* <button
           className={`btn ${
             (type === "add" && "add") ||
