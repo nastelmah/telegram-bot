@@ -1,7 +1,13 @@
-import React from "react";
 import "./Button.css";
 
-function Button({ type, title, disable, onClick }) {
+interface IButton {
+  type: string;
+  title: string;
+  disable: boolean;
+  onClick: () => void;
+}
+
+export const Button = ({ type, title, disable, onClick }: IButton) => {
   return (
     <button
       className={`btn ${
@@ -15,6 +21,4 @@ function Button({ type, title, disable, onClick }) {
       {title}
     </button>
   );
-}
-
-export default Button;
+};
