@@ -51,44 +51,23 @@ export const CardFood = ({ food, onAdd, onRemove }: ICardFoodProps) => {
           </button>
         ) : (
           <div className="btn-container">
-            <button onClick={handleIncrement} disabled={!isAvailable}>
+            <button
+              className="btn-plus"
+              onClick={handleIncrement}
+              disabled={!isAvailable}
+            >
               +
             </button>
-            <button onClick={handleDecrement} disabled={!isAvailable}>
+            <button
+              className="btn-minus"
+              onClick={handleDecrement}
+              disabled={!isAvailable}
+            >
               -
             </button>
           </div>
         )}
-        {/* <button
-          className={`btn ${
-            (type === "add" && "add") ||
-            (type === "remove" && "remove") ||
-            (type === "checkout" && "checkout")
-          }`}
-          disabled={disable}
-          onClick={onClick}
-        >
-          {title}
-        </button> */}
       </div>
-      {/* <div className="btn-container">
-        <Button
-          title={"+"}
-          type={"add"}
-          onClick={handleIncrement}
-          disable={false}
-        />
-        {count !== 0 ? (
-          <Button
-            title={"-"}
-            type={"remove"}
-            onClick={handleDecrement}
-            disable={false}
-          />
-        ) : (
-          ""
-        )}
-      </div> */}
     </div>
   );
 };

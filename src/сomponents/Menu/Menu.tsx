@@ -47,7 +47,6 @@ export const Menu = ({
 
   return (
     <>
-      <h1 className="heading">Order Food</h1>
       <Cart cartItems={cartItems} onCheckout={onCheckout} />
       <ListFood foods={foods} onAdd={onAdd} onRemove={onRemove} />
     </>

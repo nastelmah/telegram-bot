@@ -78,6 +78,23 @@
 .btn-container__image {
   margin-left: 10px;
 }
+.btn-container .btn-plus,
+.btn-container .btn-minus {
+  border: none;
+  background: orange;
+  color: white;
+  font-size: large;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
+}
+.btn-container .btn-minus {
+  padding: 0px 12px 0px 12px;
+  margin-left: 6px;
+}
+.btn-container .btn-plus:hover,
+.btn-container .btn-minus:hover {
+  cursor: pointer;
+}
 .btn-container:hover {
   cursor: pointer;
 }

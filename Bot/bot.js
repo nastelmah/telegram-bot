@@ -17,11 +17,16 @@ bot.command("menu", async (ctx) => {
     console.log('bot.command("menu"', ctx);
     await ctx.reply("Menu", {
       reply_markup: {
-        inline_keyboard: [[{ text: "Order Food", web_app: { url: web_link } }]],
+        keyboard: [[{ text: "Order Food", web_app: { url: web_link } }]],
       },
     });
   } catch (error) {
     console.error(error);
   }
+});
+
+bot.on("web_app_data", (ctx) => {
+  console.log("on msg", ctx.message.web_app_data.data);
+  ctx.reply(ctx.message.web_app_data.data);
 });
 bot.launch();
