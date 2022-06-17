@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/telegram-bot/static/css/main.87a136e4.css",
-    "main.js": "/telegram-bot/static/js/main.7e4ad12d.js",
+    "main.js": "/telegram-bot/static/js/main.2c2d8bce.js",
     "static/media/Chicken-Caesar-Salad.svg": "/telegram-bot/static/media/Chicken-Caesar-Salad.22f1afa686b4ba297e4e696282a2ada8.svg",
     "static/media/Greek-Village.svg": "/telegram-bot/static/media/Greek-Village.b35a7a2a767a361c371eb97bbfd6de8a.svg",
     "static/media/Turkey&Cheese-combo.svg": "/telegram-bot/static/media/Turkey&Cheese-combo.2681895b92b1f6083a912665abfb0cb0.svg",
@@ -24,10 +24,10 @@
     "index.html": "/telegram-bot/index.html",
     "static/media/arrow-right.svg": "/telegram-bot/static/media/arrow-right.5f8f56a0630661db793966345a3e786a.svg",
     "main.87a136e4.css.map": "/telegram-bot/static/css/main.87a136e4.css.map",
-    "main.7e4ad12d.js.map": "/telegram-bot/static/js/main.7e4ad12d.js.map"
+    "main.2c2d8bce.js.map": "/telegram-bot/static/js/main.2c2d8bce.js.map"
   },
   "entrypoints": [
     "static/css/main.87a136e4.css",
-    "static/js/main.7e4ad12d.js"
+    "static/js/main.2c2d8bce.js"
   ]
 }
