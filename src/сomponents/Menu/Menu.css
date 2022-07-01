@@ -1,0 +1,12 @@
+.menu__wrapper-form,
+.menu__empty-food-to-show {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.menu__wrapper-form__input {
+  margin: 10px;
+  height: 27px;
+  width: 88%;
+  border-radius: 10px;
+}

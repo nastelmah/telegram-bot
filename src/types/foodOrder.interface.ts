@@ -1,22 +1,20 @@
-export interface IFoodOrder {
-  name: string;
-  isAvailable: boolean;
-  category: Category;
-  price: number;
-  srcImage: string;
-  description: string;
+export interface IFood {
   id: number;
+  category_name: string;
+  products: IProduct[];
+  categories: any[];
 }
 
-type Category =
-  | ""
-  | "Meat"
-  | "Dessert"
-  | "Seafood"
-  | "Chicken"
-  | "Breakfast"
-  | "Coffee";
-
-export interface ICartItems extends IFoodOrder {
-  quantity: number;
+export interface IProduct {
+  product_id: number;
+  name: string;
+  descr: string;
+  price: number;
+  media: string;
 }
+
+export interface IOrder extends IProduct {
+  count: number;
+}
+
+export type TResponseForBot = { order: IOrder[]; comments: string };

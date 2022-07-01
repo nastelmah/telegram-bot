@@ -1,29 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./LIstFood.css";
-import { IFoodOrder } from "../../types/foodOrder.interface";
+import { IOrder, IProduct } from "../../types/foodOrder.interface";
 import { CardFood } from "../CardFood/CardFood";
 
 interface IListFoodProps {
-  foods: IFoodOrder[];
-  onAdd: (food: IFoodOrder) => void;
-  onRemove: (food: IFoodOrder) => void;
+  cartItems: IOrder[];
+  foods: IProduct[];
+  onAdd: (food: IProduct) => void;
+  onRemove: (food: IProduct) => void;
 }
 
 export const ListFood = React.memo(
-  ({ foods, onAdd, onRemove }: IListFoodProps): JSX.Element => {
-    useEffect(() => {}, []);
+  ({ cartItems, foods, onAdd, onRemove }: IListFoodProps): JSX.Element => {
     return (
       <div className="cards__container">
-        {foods.map((food) => {
-          return (
-            <CardFood
-              food={food}
-              key={food.id}
-              onAdd={onAdd}
-              onRemove={onRemove}
-            />
-          );
-        })}
+        {foods.length &&
+          foods.map((food) => {
+            return (
+              <CardFood
+                cartItems={cartItems}
+                food={food}
+                key={food.product_id}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            );
+          })}
       </div>
     );
   }

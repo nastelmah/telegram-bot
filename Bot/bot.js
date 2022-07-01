@@ -1,4 +1,4 @@
-const { Telegraf, Markup } = require("telegraf");
+const { Telegraf } = require("telegraf");
 const BOT_TOKEN = "5584878083:AAG5QV3IUtFrG_Aks6Lw2GpDivf5H9IwfCI";
 const bot = new Telegraf(BOT_TOKEN);
 const textHelp = `
@@ -14,7 +14,6 @@ bot.help((ctx) => ctx.reply(textHelp));
 
 bot.command("menu", async (ctx) => {
   try {
-    console.log('bot.command("menu"', ctx);
     await ctx.reply("Menu", {
       reply_markup: {
         keyboard: [[{ text: "Order Food", web_app: { url: web_link } }]],
@@ -25,8 +24,11 @@ bot.command("menu", async (ctx) => {
   }
 });
 
-bot.on("web_app_data", (ctx) => {
-  console.log("on msg", ctx.message.web_app_data.data);
-  ctx.reply(ctx.message.web_app_data.data);
+bot.on("web_app_data", async (ctx) => {
+  try {
+    await ctx.reply(ctx.message.web_app_data.data);
+  } catch (error) {
+    console.error(error);
+  }
 });
 bot.launch();

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100px;
-  height: 140px;
+  height: 180px;
   padding: 0px;
   margin: 13px 10px;
   position: relative;
@@ -13,25 +13,25 @@
 .not-available {
   position: absolute;
   text-align: center;
-  padding: 3px;
-  width: 47px;
-  height: 9px;
-  left: 60px;
+  padding: 5px;
+
+  height: 12px;
+
+  left: 10px;
   top: 3px;
 
   background: white;
   border-radius: 10px;
 
   font-family: "SF Pro Text";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 7px;
+  font-weight: 600;
+  font-size: 10px;
 
   color: #222222;
 }
 .card__title {
   font-family: "Source Sans Pro";
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: -0.2px;
   color: #222222;
   text-align: center;
@@ -66,7 +66,7 @@
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 22px;
   letter-spacing: -0.2px;
 
@@ -89,6 +89,8 @@
 }
 .btn-container .btn-minus {
   padding: 0px 12px 0px 12px;
+}
+.btn-container .btn-plus {
   margin-left: 6px;
 }
 .btn-container .btn-plus:hover,
@@ -105,7 +107,7 @@
 
   font-family: "Source Sans Pro";
   font-weight: 600;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: -0.2px;
   color: #222222;
   margin-top: 4px;

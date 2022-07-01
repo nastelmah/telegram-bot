@@ -1,19 +1,30 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./CardFood.css";
-import { Button } from "../Button/Button";
-import { IFoodOrder } from "../../types/foodOrder.interface";
+import { IOrder, IProduct } from "../../types/foodOrder.interface";
 import arrowRight from "../../images/arrow-right.svg";
+import { url } from "../../services/getProducts";
 
 interface ICardFoodProps {
-  food: IFoodOrder;
-  onAdd: (food: IFoodOrder) => void;
-  onRemove: (food: IFoodOrder) => void;
+  food: IProduct;
+  cartItems: IOrder[];
+  onAdd: (food: IProduct) => void;
+  onRemove: (food: IProduct) => void;
 }
 
-export const CardFood = ({ food, onAdd, onRemove }: ICardFoodProps) => {
-  const [count, setCount] = useState(0);
-  const { name, srcImage, price, id, category, isAvailable, description } =
-    food;
+export const CardFood = ({
+  cartItems,
+  food,
+  onAdd,
+  onRemove,
+}: ICardFoodProps) => {
+  const quantityFoodById = cartItems.find(
+    (cartFood) => cartFood.product_id === food.product_id
+  )?.count;
+  const quantity = quantityFoodById ? quantityFoodById : 0;
+  const [count, setCount] = useState(quantity);
+  const { name, media, price, descr } = food;
+
+  const srcImage = `${url}/${media}`;
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -26,9 +37,6 @@ export const CardFood = ({ food, onAdd, onRemove }: ICardFoodProps) => {
 
   return (
     <div className="card">
-      {isAvailable ? null : (
-        <span className="not-available">not available</span>
-      )}
       <span
         className={`${count !== 0 ? "card__badge" : "card__badge--hidden"}`}
       >
@@ -41,29 +49,17 @@ export const CardFood = ({ food, onAdd, onRemove }: ICardFoodProps) => {
         <span className="card__title">{name}</span>
         <span className="card__price">{price} AED</span>
         {count === 0 ? (
-          <button
-            className="btn-container"
-            onClick={handleIncrement}
-            disabled={!isAvailable}
-          >
+          <button className="btn-container" onClick={handleIncrement}>
             Add to Cart{" "}
             <img className="btn-container__image" src={arrowRight} />
           </button>
         ) : (
           <div className="btn-container">
-            <button
-              className="btn-plus"
-              onClick={handleIncrement}
-              disabled={!isAvailable}
-            >
-              +
-            </button>
-            <button
-              className="btn-minus"
-              onClick={handleDecrement}
-              disabled={!isAvailable}
-            >
+            <button className="btn-minus" onClick={handleDecrement}>
               -
+            </button>
+            <button className="btn-plus" onClick={handleIncrement}>
+              +
             </button>
           </div>
         )}
