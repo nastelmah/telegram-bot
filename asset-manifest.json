@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/telegram-bot/static/css/main.eddc6c0a.css",
-    "main.js": "/telegram-bot/static/js/main.6f741560.js",
+    "main.js": "/telegram-bot/static/js/main.effa5926.js",
     "index.html": "/telegram-bot/index.html",
     "static/media/loader_icon.svg": "/telegram-bot/static/media/loader_icon.7889ca703fae0de75a3d41c85d75b086.svg",
     "static/media/arrow-right.svg": "/telegram-bot/static/media/arrow-right.5f8f56a0630661db793966345a3e786a.svg",
     "main.eddc6c0a.css.map": "/telegram-bot/static/css/main.eddc6c0a.css.map",
-    "main.6f741560.js.map": "/telegram-bot/static/js/main.6f741560.js.map"
+    "main.effa5926.js.map": "/telegram-bot/static/js/main.effa5926.js.map"
   },
   "entrypoints": [
     "static/css/main.eddc6c0a.css",
-    "static/js/main.6f741560.js"
+    "static/js/main.effa5926.js"
   ]
 }
