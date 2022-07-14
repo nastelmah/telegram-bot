@@ -3,17 +3,16 @@ import { IOrder, IProduct } from "../../types/foodOrder.interface";
 import { ListFood } from "../ListFood/LIstFood";
 import { useEffect, useState } from "react";
 import { Loading } from "../../сomponents/Loading/Loading";
+import { setCartsToSessionStorge } from "../../services/sessionStorage";
 
 interface IMenuProps {
   foods: IProduct[];
-  setFoods: React.Dispatch<React.SetStateAction<IProduct[]>>;
   cartItems: IOrder[];
   setCartItems: React.Dispatch<React.SetStateAction<IOrder[]>>;
 }
 
 export const Menu = ({
   foods,
-  setFoods,
   cartItems,
   setCartItems,
 }: IMenuProps): JSX.Element => {
@@ -31,31 +30,36 @@ export const Menu = ({
   const onAdd = (food: IProduct) => {
     const exist = cartItems.find((x) => x.product_id === food.product_id);
     if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.product_id === food.product_id
-            ? { ...exist, count: exist.count + 1 }
-            : x
-        )
+      const updatedCart = cartItems.map((x) =>
+        x.product_id === food.product_id
+          ? { ...exist, count: exist.count + 1 }
+          : x
       );
+      setCartItems(updatedCart);
+      setCartsToSessionStorge(updatedCart);
     } else {
       setCartItems([...cartItems, { ...food, count: 1 }]);
+      setCartsToSessionStorge([...cartItems, { ...food, count: 1 }]);
     }
   };
 
   const onRemove = (food: IProduct) => {
     const exist = cartItems.find((x) => x.product_id === food.product_id);
     if (exist && exist.count === 1) {
-      setCartItems(cartItems.filter((x) => x.product_id !== food.product_id));
+      const updatedCart = cartItems.filter(
+        (x) => x.product_id !== food.product_id
+      );
+      setCartItems(updatedCart);
+      setCartsToSessionStorge(updatedCart);
     } else {
       if (exist) {
-        setCartItems(
-          cartItems.map((x) =>
-            x.product_id === food.product_id
-              ? { ...exist, count: exist.count - 1 }
-              : x
-          )
+        const updatedCart = cartItems.map((x) =>
+          x.product_id === food.product_id
+            ? { ...exist, count: exist.count - 1 }
+            : x
         );
+        setCartItems(updatedCart);
+        setCartsToSessionStorge(updatedCart);
       }
     }
   };

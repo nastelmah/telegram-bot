@@ -48,7 +48,7 @@ export const OrderFood = ({
                   </div>
                 </div>
                 <div className="your-order__cart-item__price">
-                  {item.price * item.count} AED
+                  {Math.ceil(item.price * item.count)} SATS
                 </div>
               </div>
             );

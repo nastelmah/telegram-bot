@@ -3,7 +3,12 @@ import "./App.css";
 import { Menu } from "./сomponents/Menu/Menu";
 import { OrderFood } from "./сomponents/OrderFood/OrderFood";
 import { getProducts } from "./services/getProducts";
-
+import {
+  getCartsFromSessionStorge,
+  getProductsFromSessionStorge,
+  setProductsToSessionStorge,
+} from "./services/sessionStorage";
+import { currencySatoshiFromAED } from "./services/getCurrency";
 const tele = window.Telegram.WebApp;
 
 function App() {
@@ -13,18 +18,30 @@ function App() {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
-    getProducts()
-      .then((response) => {
-        const foods = response
-          .map((item) => {
-            return item.products;
-          })
-          .flat();
-        setFoods(foods);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (getProductsFromSessionStorge()) {
+      setFoods(getProductsFromSessionStorge());
+    } else {
+      Promise.all([getProducts(), currencySatoshiFromAED()])
+        .then((response) => {
+          const foods = response[0]
+            .map((item) => {
+              return item.products;
+            })
+            .flat();
+          const satoshi = response[1].satoshi;
+          const changedPriceSatsFoods = foods.map((food) => {
+            return { ...food, price: food.price / satoshi };
+          });
+          setFoods(changedPriceSatsFoods);
+          setProductsToSessionStorge(changedPriceSatsFoods);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    if (getCartsFromSessionStorge()) {
+      setCartItems(getCartsFromSessionStorge());
+    }
   }, []);
 
   useEffect(() => {
@@ -37,7 +54,7 @@ function App() {
         acc = acc + object.price * object.count;
         return acc;
       }, 0);
-      tele.MainButton.text = `Pay ${totalPrice} AED`;
+      tele.MainButton.text = `Pay ${Math.ceil(totalPrice)} SATS`;
       tele.MainButton.show();
       tele.MainButton.onClick(onClickMainButton);
     }
