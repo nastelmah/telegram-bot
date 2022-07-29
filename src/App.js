@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Menu } from "./сomponents/Menu/Menu";
 import { OrderFood } from "./сomponents/OrderFood/OrderFood";
+import { OpenStreetMapComponent } from "./сomponents/OpenStreetMap/OpenStreetMapComponent";
 import { getProducts } from "./services/getProducts";
 import {
   getCartsFromSessionStorge,
@@ -16,6 +17,8 @@ function App() {
   const [comments, setComments] = useState("");
   const [isOrderFood, setIsOrderFood] = useState(false);
   const [foods, setFoods] = useState([]);
+  const [addressLatLon, setAddressLatLon] = useState(null);
+  const [isOpenMap, setIsOpenMap] = useState(false);
 
   useEffect(() => {
     if (getProductsFromSessionStorge()) {
@@ -24,8 +27,10 @@ function App() {
       Promise.all([getProducts(), currencySatoshiFromAED()])
         .then((response) => {
           const foods = response[0]
-            .map((item) => {
-              return item.products;
+            .map((category) => {
+              return category.products.map((product) => {
+                return { ...product, category_name: category.category_name };
+              });
             })
             .flat();
           const satoshi = response[1].satoshi;
@@ -78,7 +83,11 @@ function App() {
       const order = cartItems.map((item) => {
         return { product_id: item.product_id, count: item.count };
       });
-      const responseForBot = { order: order, comments: comments };
+      const responseForBot = {
+        order: order,
+        comments: comments,
+        coord: addressLatLon,
+      };
       tele.sendData(JSON.stringify(responseForBot));
     }
   }
@@ -104,6 +113,19 @@ function App() {
           />
         </>
       )}
+      <div className="openmap-container">
+        <button
+          className="openmap-container-button"
+          onClick={() => {
+            setIsOpenMap(!isOpenMap);
+          }}
+        >
+          {isOpenMap ? "Hide map" : "Show map"}
+        </button>
+        {isOpenMap ? (
+          <OpenStreetMapComponent setAddressLatLon={setAddressLatLon} />
+        ) : null}
+      </div>
     </>
   );
 }

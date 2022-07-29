@@ -11,6 +11,7 @@ export interface IProduct {
   descr: string;
   price: number;
   media: string;
+  category_name: string;
 }
 
 export interface IOrder extends IProduct {

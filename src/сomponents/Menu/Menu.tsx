@@ -19,9 +19,15 @@ export const Menu = ({
   const [inputValue, setInputValue] = useState("");
   const [foodToSHow, setFoodToSHow] = useState<IProduct[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [choseCategory, setChoseCategory] = useState<string>("all");
 
   useEffect(() => {
     setFoodToSHow(foods);
+    const categoriesFood = Array.from(
+      new Set(foods.map((food) => food.category_name))
+    );
+    setCategories(categoriesFood);
     if (foods.length !== 0) {
       setIsLoading(false);
     }
@@ -65,6 +71,7 @@ export const Menu = ({
   };
 
   const searchFood = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChoseCategory("all");
     if (event.target.value.length) {
       setFoodToSHow(
         foods.filter((food) =>
@@ -78,6 +85,16 @@ export const Menu = ({
     setInputValue(event.target.value);
   };
 
+  const choseFoodsByCategory = (category: string) => {
+    setFoodToSHow(foods.filter((food) => food.category_name === category));
+    setChoseCategory(category);
+  };
+
+  const choseAllFoods = () => {
+    setFoodToSHow(foods);
+    setChoseCategory("all");
+  };
+
   return (
     <>
       <form className="menu__wrapper-form">
@@ -89,6 +106,40 @@ export const Menu = ({
           onChange={searchFood}
         />
       </form>
+      <div className="category-button-group">
+        {categories.length &&
+          categories.map((category) => {
+            return (
+              <button
+                className="button-choose-category"
+                style={{
+                  color: choseCategory === category ? "orange" : "white",
+                  background: choseCategory === category ? "white" : "orange",
+                }}
+                key={category}
+                onClick={() => {
+                  choseFoodsByCategory(category);
+                }}
+              >
+                {category}
+              </button>
+            );
+          })}
+        {categories.length && (
+          <button
+            style={{
+              color: choseCategory === "all" ? "orange" : "white",
+              background: choseCategory === "all" ? "white" : "orange",
+            }}
+            className="button-choose-category"
+            onClick={() => {
+              choseAllFoods();
+            }}
+          >
+            All foods
+          </button>
+        )}
+      </div>
       {isLoading ? (
         <Loading />
       ) : foodToSHow.length === 0 && foods.length !== 0 ? (
