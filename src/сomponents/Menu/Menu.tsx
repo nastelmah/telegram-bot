@@ -107,25 +107,26 @@ export const Menu = ({
         />
       </form>
       <div className="category-button-group">
-        {categories.length &&
-          categories.map((category) => {
-            return (
-              <button
-                className="button-choose-category"
-                style={{
-                  color: choseCategory === category ? "orange" : "white",
-                  background: choseCategory === category ? "white" : "orange",
-                }}
-                key={category}
-                onClick={() => {
-                  choseFoodsByCategory(category);
-                }}
-              >
-                {category}
-              </button>
-            );
-          })}
-        {categories.length && (
+        {categories.length
+          ? categories.map((category) => {
+              return (
+                <button
+                  className="button-choose-category"
+                  style={{
+                    color: choseCategory === category ? "orange" : "white",
+                    background: choseCategory === category ? "white" : "orange",
+                  }}
+                  key={category}
+                  onClick={() => {
+                    choseFoodsByCategory(category);
+                  }}
+                >
+                  {category}
+                </button>
+              );
+            })
+          : null}
+        {categories.length ? (
           <button
             style={{
               color: choseCategory === "all" ? "orange" : "white",
@@ -138,7 +139,7 @@ export const Menu = ({
           >
             All foods
           </button>
-        )}
+        ) : null}
       </div>
       {isLoading ? (
         <Loading />

@@ -1,54 +1,48 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import iconUrl from "./location_marker.svg";
 import L from "leaflet";
-import { IAdressLatLon, IPlaces } from "./types";
+import { IAdressLatLon } from "./types";
 
 const icon = L.icon({
   iconUrl: iconUrl,
   iconSize: [38, 38],
 });
 
-function ResetCenterView(props: any) {
-  const { selectPosition } = props;
+export interface IPropsResetCenterView {
+  addressLatLon: IAdressLatLon;
+}
+
+function ResetCenterView(props: IPropsResetCenterView) {
+  const { addressLatLon } = props;
   const map = useMap();
 
   useEffect(() => {
-    if (selectPosition) {
+    if (addressLatLon.lat && addressLatLon.lng) {
       map.setView(
-        L.latLng(selectPosition?.lat, selectPosition?.lon),
+        L.latLng(addressLatLon.lat, addressLatLon.lng),
         map.getZoom(),
         {
           animate: true,
         }
       );
     }
-  }, [selectPosition, map]);
+  }, [addressLatLon, map]);
 
   return null;
 }
 
 export interface IPropsMaps {
-  selectPosition: IPlaces | null;
-  setAddressLatLon: React.Dispatch<React.SetStateAction<IAdressLatLon | null>>;
+  addressLatLon: IAdressLatLon;
+  setAddressLatLon: React.Dispatch<React.SetStateAction<IAdressLatLon>>;
 }
 
-export default function Maps({ selectPosition, setAddressLatLon }: IPropsMaps) {
-  let locationSelection = null;
-  if (selectPosition) {
-    locationSelection = {
-      lat: selectPosition.lat,
-      lng: selectPosition.lon,
-    };
-  }
-
+export default function Maps({ addressLatLon, setAddressLatLon }: IPropsMaps) {
   const center = {
     lat: 53.893009,
     lng: 27.567444,
   };
-
-  const [position, setPosition] = useState(null);
 
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
@@ -56,8 +50,6 @@ export default function Maps({ selectPosition, setAddressLatLon }: IPropsMaps) {
       dragend() {
         const marker: any = markerRef.current;
         if (marker != null) {
-          console.log("current position", marker.getLatLng());
-          setPosition(marker.getLatLng());
           setAddressLatLon(marker.getLatLng());
         }
       },
@@ -78,18 +70,20 @@ export default function Maps({ selectPosition, setAddressLatLon }: IPropsMaps) {
       {
         <Marker
           position={
-            position ? position : locationSelection ? locationSelection : center
+            addressLatLon.lat && addressLatLon.lng
+              ? { lat: addressLatLon.lat, lng: addressLatLon.lng }
+              : center
           }
           icon={icon}
           draggable={true}
           eventHandlers={eventHandlers}
           ref={markerRef}
         >
-          <Popup>Delivery location.</Popup>
+          <Popup>delivery adress</Popup>
         </Marker>
       }
 
-      <ResetCenterView selectPosition={selectPosition} />
+      <ResetCenterView addressLatLon={addressLatLon} />
     </MapContainer>
   );
 }

@@ -6,13 +6,14 @@ export interface IPlaces {
   icon: string;
   importance: number;
   licence: string;
-  lat: number;
-  lon: number;
+  lat: string;
+  lon: string;
   osm_id: number;
   osm_type: string;
   place_id: number;
   type: string;
 }
+
 export interface IAdress {
   city: string;
   city_district: string;
@@ -25,7 +26,8 @@ export interface IAdress {
   shop: string;
   suburb: string;
 }
+
 export interface IAdressLatLon {
-  lat: number;
-  lng: number;
+  lat: number | null;
+  lng: number | null;
 }

@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { IPlaces } from "./types";
+import { IAdressLatLon, IPlaces } from "./types";
 
 const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search";
 
-export default function SearchBox(props: any) {
-  const { setSelectPosition, setAddressLatLon } = props;
+export interface IPropsSearchBox {
+  setAddressLatLon: React.Dispatch<React.SetStateAction<IAdressLatLon>>;
+}
+
+export default function SearchBox(props: IPropsSearchBox) {
+  const { setAddressLatLon } = props;
   const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState<IPlaces[]>([]);
   const [isChoseAddress, setIsChoseAddress] = useState<boolean>(false);
@@ -20,7 +24,9 @@ export default function SearchBox(props: any) {
     )
       .then((response) => response.text())
       .then((result) => {
-        setListPlace(JSON.parse(result));
+        let foundPlaces: IPlaces[] = JSON.parse(result);
+        foundPlaces.length = 6;
+        setListPlace(foundPlaces);
       })
       .catch((err) => console.log("err: ", err));
   };
@@ -51,9 +57,8 @@ export default function SearchBox(props: any) {
                 <div key={place.place_id}>
                   <div
                     onClick={() => {
-                      setSelectPosition(place);
+                      setAddressLatLon({ lat: +place.lat, lng: +place.lon });
                       setIsChoseAddress(true);
-                      setAddressLatLon({ lat: place.lat, lng: place.lon });
                     }}
                   >
                     <span>{place.display_name}</span>

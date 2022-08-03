@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: 10px;
 }
 .your-order__container {
   width: 100%;
@@ -88,4 +90,6 @@
 .your-order__textarea {
   font-family: "Source Sans Pro";
   color: #222222;
+  border-radius: 10px;
+  margin: 10px;
 }

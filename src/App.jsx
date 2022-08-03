@@ -17,7 +17,7 @@ function App() {
   const [comments, setComments] = useState("");
   const [isOrderFood, setIsOrderFood] = useState(false);
   const [foods, setFoods] = useState([]);
-  const [addressLatLon, setAddressLatLon] = useState(null);
+  const [addressLatLon, setAddressLatLon] = useState({ lat: null, lng: null });
   const [isOpenMap, setIsOpenMap] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ function App() {
     return () => {
       tele.MainButton.offClick(onClickMainButton);
     };
-  }, [cartItems, isOrderFood, comments]);
+  }, [cartItems, isOrderFood, comments, addressLatLon]);
 
   function onClickMainButton() {
     if (!isOrderFood) {
@@ -83,11 +83,13 @@ function App() {
       const order = cartItems.map((item) => {
         return { product_id: item.product_id, count: item.count };
       });
+
       const responseForBot = {
         order: order,
         comments: comments,
-        coord: addressLatLon,
+        coord: { lat: addressLatLon.lat, lon: addressLatLon.lng },
       };
+
       tele.sendData(JSON.stringify(responseForBot));
     }
   }
@@ -102,6 +104,22 @@ function App() {
             cartItems={cartItems}
             setIsOrderFood={setIsOrderFood}
           />
+          <div className="openmap-container">
+            <button
+              className="openmap-container-button"
+              onClick={() => {
+                setIsOpenMap(!isOpenMap);
+              }}
+            >
+              {isOpenMap ? "Hide map" : "Show map"}
+            </button>
+            {isOpenMap ? (
+              <OpenStreetMapComponent
+                addressLatLon={addressLatLon}
+                setAddressLatLon={setAddressLatLon}
+              />
+            ) : null}
+          </div>
         </>
       ) : (
         <>
@@ -113,19 +131,6 @@ function App() {
           />
         </>
       )}
-      <div className="openmap-container">
-        <button
-          className="openmap-container-button"
-          onClick={() => {
-            setIsOpenMap(!isOpenMap);
-          }}
-        >
-          {isOpenMap ? "Hide map" : "Show map"}
-        </button>
-        {isOpenMap ? (
-          <OpenStreetMapComponent setAddressLatLon={setAddressLatLon} />
-        ) : null}
-      </div>
     </>
   );
 }

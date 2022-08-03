@@ -5,23 +5,22 @@ import { IPlaces, IAdressLatLon } from "./types";
 import "./style.css";
 
 interface MapsProps {
-  setAddressLatLon: React.Dispatch<React.SetStateAction<IAdressLatLon | null>>;
+  addressLatLon: IAdressLatLon;
+  setAddressLatLon: React.Dispatch<React.SetStateAction<IAdressLatLon>>;
 }
 
-export const OpenStreetMapComponent = ({ setAddressLatLon }: MapsProps) => {
-  const [selectPosition, setSelectPosition] = useState<IPlaces | null>(null);
-
+export const OpenStreetMapComponent = ({
+  addressLatLon,
+  setAddressLatLon,
+}: MapsProps) => {
   return (
     <div className="container-map">
       <div className="container-search">
-        <SearchBox
-          setSelectPosition={setSelectPosition}
-          setAddressLatLon={setAddressLatLon}
-        />
+        <SearchBox setAddressLatLon={setAddressLatLon} />
       </div>
       <div className="map">
         <Maps
-          selectPosition={selectPosition}
+          addressLatLon={addressLatLon}
           setAddressLatLon={setAddressLatLon}
         />
       </div>
